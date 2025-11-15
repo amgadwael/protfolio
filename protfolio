@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<!-- (معدل) سيتم تحديث dir لاحقاً -->
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- (معدل) سيتم تحديث العنوان بالجافاسكريبت -->
+    <title data-lang-key="meta_title">Amgad Torky protfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ====================================================================
+        ||                                                                    ||
+        ||                          CSS - V-Glass (Bilingual)                   ||
+        ||                                                                    ||
+        ====================================================================
+        */
+        
+        :root {
+            --primary: #6C63FF;
+            --primary-light: #8A85FF;
+            --secondary: #FF6584;
+            --accent: #36D1DC;
+            
+            --bg-light: #F0F2F5; 
+            --bg-glass: rgba(255, 255, 255, 0.4); 
+            --border-glass: rgba(255, 255, 255, 0.7);
+            --text-dark: #1A1A1A; 
+            --text-gray: #555;  
+            
+            --bg-page: var(--bg-light);
+            --bg-card: var(--bg-glass);
+            --bg-navbar: rgba(240, 242, 245, 0.75);
+            --bg-navbar-scrolled: rgba(240, 242, 245, 0.95);
+            --bg-contact: white;
+            --bg-social: white;
+            --text-main: var(--text-dark);
+            --text-sub: var(--text-gray);
+            --border-color: rgba(0, 0, 0, 0.05);
+            --form-bg: rgba(0, 0, 0, 0.05);
+            --form-border: rgba(0, 0, 0, 0.1);
+
+            --transition-speed-fast: 0.3s ease;
+            --transition-speed-slow: 0.6s ease;
+        }
+        
+        html.dark {
+            --primary: #DAA520; 
+            --primary-light: #F0C460;
+            --secondary: #FF6584; 
+            --accent: #FFC400; 
+            
+            --bg-page: #0a0a0a; 
+            --bg-card: rgba(26, 26, 26, 0.6); 
+            --border-glass: rgba(218, 165, 32, 0.3); 
+            --bg-navbar: rgba(10, 10, 10, 0.75);
+            --bg-navbar-scrolled: rgba(10, 10, 10, 0.95);
+            --bg-contact: #111;
+            --bg-social: #1A1A1A;
+            
+            --text-main: #F0F0F0;
+            --text-sub: #8A8A8A;
+            
+            --border-color: rgba(255, 255, 255, 0.05);
+            --form-bg: rgba(255, 255, 255, 0.05);
+            --form-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            /* (معدل) استخدام inset-inline-start لـ RTL/LTR */
+            inset-inline-start: 0; 
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-navbar); 
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* ====================================================================
+        ||          (تعديل) تم إلغاء ستايل لوجو الصور واستبداله بستایل نصي        ||
+        ====================================================================
+        */
+        
+        .logo {
+            text-decoration: none;
+            position: relative;
+            z-index: 1002;
+            /* (جديد) ستايل النص للوجو */
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-main);
+            transition: var(--transition-speed-fast);
+        }
+        .logo:hover {
+            color: var(--primary);
+        }
+
+        /* (ملغي) تم إلغاء كل الستايلات الخاصة بـ .logo-img, .logo-light, .logo-dark */
+
+        /* ====================================================================
+        ||                         نهاية تعديل اللوجو                        ||
+        ====================================================================
+        */
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center; 
+        }
+        
+        .nav-links a {
+            color: var(--text-main); 
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            /* (معدل) استخدام inset-inline-start لـ RTL/LTR */
+            inset-inline-start: 0; 
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary); 
+        }
+        
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition-speed-fast);
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-toggle-btn:hover {
+            color: var(--primary);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        html.dark .theme-toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .theme-toggle-btn .fa-sun {
+            display: none;
+        }
+        html.dark .theme-toggle-btn .fa-sun {
+            display: block;
+        }
+        html.dark .theme-toggle-btn .fa-moon {
+            display: none;
+        }
+        
+        /* (جديد) زر تبديل اللغة */
+        .lang-toggle-btn {
+            background: none;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-speed-fast);
+            padding: 0.25rem 0.75rem;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+        }
+        .lang-toggle-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        html.dark .lang-toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .menu-toggle {
+            display: none; 
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1002;
+            transition: var(--transition-speed-fast);
+        }
+        .menu-toggle:hover {
+            color: var(--primary);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            /* (معدل) استخدام inset-inline-end لـ RTL/LTR */
+            inset-inline-end: -100%; 
+            width: 70%;
+            max-width: 300px;
+            height: 100vh;
+            
+            background-color: var(--bg-navbar-scrolled);
+            backdrop-filter: blur(20px);
+            /* (معدل) استخدام border-inline-start لـ RTL/LTR */
+            border-inline-start: 1px solid var(--border-color);
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            
+            z-index: 1001;
+            /* (معدل) استخدام inset-inline-end لـ RTL/LTR */
+            transition: inset-inline-end 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .mobile-nav.active {
+            /* (معدل) استخدام inset-inline-end لـ RTL/LTR */
+            inset-inline-end: 0;
+        }
+        
+        /* (جديد) زر إغلاق القائمة الجانبية */
+        .menu-close-btn {
+            display: block; 
+            position: absolute;
+            top: 2rem;
+            /* (جديد) استخدام inset-inline-end لـ RTL/LTR */
+            inset-inline-end: 2rem; 
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 2rem; 
+            cursor: pointer;
+            transition: var(--transition-speed-fast);
+            z-index: 1003;
+        }
+        .menu-close-btn:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        .mobile-nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: var(--transition-speed-fast);
+        }
+        .mobile-nav a:hover {
+            color: var(--primary);
+        }
+        .mobile-nav .theme-toggle-btn {
+            font-size: 1.5rem;
+        }
+        /* (جديد) زر اللغة في القائمة الجانبية */
+        .mobile-nav .lang-toggle-btn {
+            font-size: 1.2rem;
+            width: 45px;
+            height: 45px;
+        }
+
+
+        /* قسم الهيرو */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            /* (معدل) استخدام inset-inline-start لـ RTL/LTR */
+            inset-inline-start: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(108, 99, 255, 0.1) 0%, rgba(240, 242, 245, 0) 70%);
+            z-index: -1;
+        }
+        html.dark .hero::before {
+             background: radial-gradient(circle, rgba(218, 165, 32, 0.1) 0%, rgba(10, 10, 10, 0) 70%);
+        }
+        
+        .hero-content {
+            flex: 1;
+            z-index: 2;
+            max-width: 60%;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-main); 
+        }
+        
+        .hero-content h1 .highlight {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            color: var(--text-sub); 
+            max-width: 50ch;
+        }
+
+        /* تصميم الزر */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            /* (معدل) استخدام gap لـ RTL/LTR */
+            gap: 0.5rem; 
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white; 
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        html.dark .btn {
+            box-shadow: 0 10px 20px rgba(218, 165, 32, 0.3);
+        }
+        
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            /* (معدل) استخدام inset-inline-start لـ RTL/LTR */
+            inset-inline-start: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4);
+        }
+        html.dark .btn:hover {
+            box-shadow: 0 15px 30px rgba(218, 165, 32, 0.4);
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            /* (معدل) استخدام right: 50% و transform لـ RTL/LTR */
+            right: 50%;
+            transform: translateX(50%); 
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+
+        /* قسم "من أنا" */
+        .about {
+            padding: 10rem 5%;
+            background-color: var(--bg-page); 
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .about::before {
+            content: "";
+            position: absolute;
+            bottom: -30%;
+            /* (معدل) استخدام inset-inline-start لـ RTL/LTR */
+            inset-inline-start: -10%;
+            width: 120%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255, 101, 132, 0.05) 0%, rgba(240, 242, 245, 0) 70%);
+            z-index: 0;
+        }
+        html.dark .about::before {
+             background: radial-gradient(circle, rgba(255, 101, 132, 0.05) 0%, rgba(10, 10, 10, 0) 70%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 5rem;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text-sub); 
+        }
+        
+        .about-photo-wrapper {
+            width: 300px;
+            height: 400px;
+            justify-self: center;
+            background-color: var(--primary);
+            border-radius: 12px;
+            overflow: hidden;
+            /* (معدل) تعديل القص ليعمل جيداً في LTR/RTL */
+        }
+        /* (ملغي) تم حذف قواعد الـ clip-path من هنا لضمان ظهور المستطيل */
+         
+
+        
+        .about-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+        
+        .skill {
+            padding: 0.7rem 1.5rem;
+            background: rgba(108, 99, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 30px;
+            font-size: 1rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        html.dark .skill {
+            background: rgba(218, 165, 32, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .skill:hover {
+            background: rgba(108, 99, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.2);
+        }
+        html.dark .skill:hover {
+            background: rgba(218, 165, 32, 0.2);
+            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.2);
+        }
+
+        /* ====================================================================
+        ||          (جديد) قسم المشاريع - شبكة (Grid) عادية بدلاً من الأفقي       ||
+        ====================================================================
+        */
+        
+        /* (جديد) قسم المشاريع كقسم عادي */
+        .projects {
+            padding: 10rem 5%;
+            background-color: var(--bg-page);
+            border-top: 1px solid var(--border-color);
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* (جديد) شبكة المشاريع المتجاوبة */
+        .projects-grid {
+            display: grid;
+            /* (جديد) شبكة تتكيف تلقائياً مع حجم الشاشة */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* (معدل) كارت المشروع "الزجاجي" في الشبكة */
+        .project-card {
+            display: grid;
+            /* (معدل) صورة في الأعلى، نص في الأسفل */
+            grid-template-columns: 1fr; 
+            align-items: center;
+            
+            background: var(--bg-card);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            
+            /* (ملغي) إلغاء الأحجام الثابتة */
+            
+            transition: var(--transition-speed-fast);
+        }
+        html.dark .project-card {
+             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-card:hover {
+             transform: scale(1.02); 
+        }
+        
+        .project-card .project-text {
+            padding: 2rem; /* (معدل) تقليل الـ padding */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .project-card .project-category {
+            font-size: 0.9rem;
+            color: var(--primary); 
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem; /* (معدل) */
+            font-weight: 900;
+            margin: 0.5rem 0 1rem 0;
+            color: var(--text-main);
+        }
+
+        .project-card p {
+            color: var(--text-sub);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            /* (جديد) تحديد ارتفاع بسيط للوصف لتوحيد شكل الكروت */
+            min-height: 110px; 
+        }
+        
+        .project-card .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-card .tag {
+            padding: 0.4rem 1rem;
+            background: rgba(255, 101, 132, 0.1);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            border: 1px solid rgba(255, 101, 132, 0.2);
+        }
+        
+        .project-card .project-visit-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transition-speed-fast);
+            margin-top: 1rem;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.2);
+            /* (معدل) استخدام align-self لـ RTL/LTR */
+            align-self: flex-start; 
+        }
+        html.dark .project-card .project-visit-btn {
+             box-shadow: 0 5px 15px rgba(218, 165, 32, 0.2);
+        }
+        
+        .project-card .project-visit-btn:hover {
+             transform: scale(1.05) translateY(-3px);
+             box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+        html.dark .project-card .project-visit-btn:hover {
+             box-shadow: 0 10px 20px rgba(218, 165, 32, 0.3);
+        }
+        
+        .project-gallery-wrapper {
+            width: 100%;
+            height: 250px; /* (معدل) تحديد ارتفاع ثابت للصورة */
+            position: relative;
+            /* (معدل) تم تغيير لون الخلفية ليتناسب مع الثيم */
+            background-color: var(--border-color);
+            /* (جديد) تم نقل الستايل الرئيسي هنا */
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+        }
+        
+        /* (ملغي) تم إلغاء معرض الصور المتحرك */
+        
+        /* قسم التواصل */
+        .contact {
+            padding: 10rem 5%;
+            background: var(--bg-contact); 
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .contact::before {
+            content: "";
+            position: absolute;
+            bottom: -50%;
+            /* (معدل) استخدام inset-inline-end لـ RTL/LTR */
+            inset-inline-end: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(108, 99, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: 0;
+        }
+        html.dark .contact::before {
+             background: radial-gradient(circle, rgba(218, 165, 32, 0.1) 0%, rgba(10, 10, 10, 0) 70%);
+        }
+        
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+            /* (معدل) استخدام text-align: start لـ RTL/LTR */
+            text-align: start; 
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--form-bg); 
+            border: 1px solid var(--form-border); 
+            border-radius: 15px;
+            color: var(--text-main); 
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+            background: rgba(255, 255, 255, 0.8); 
+        }
+        html.dark .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2);
+            background: rgba(255, 255, 255, 0.08); 
+        }
+        
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        /* (ملغي) تم حذف ستايل زر واتساب العائم */
+        /* .whatsapp-fab { ... } */
+        /* .whatsapp-fab:hover { ... } */
+        /* @keyframes pulse { ... } */
+        
+        /* الفوتر */
+        footer {
+            padding: 4rem 5%;
+            text-align: center;
+            background: var(--bg-page); 
+            border-top: 1px solid var(--border-color);
+            position: relative;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--bg-social); 
+            border-radius: 50%;
+            color: var(--text-main); 
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            font-size: 1.2rem; 
+            border: 1px solid var(--border-color);
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white; 
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+        html.dark .social-link:hover {
+            box-shadow: 0 10px 20px rgba(218, 165, 32, 0.3);
+        }
+        
+        .copyright {
+            color: var(--text-sub); 
+            font-size: 1rem;
+        }
+        
+        /* ====================================================================
+        ||                 (معدل) قسم الميديا كويري (Responsive)                ||
+        ====================================================================
+        */
+        
+        /* الأجهزة اللوحية (Tablets) */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none; 
+            }
+            .menu-toggle {
+                display: block; 
+            }
+
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            .hero {
+                flex-direction: column;
+                justify-content: center;
+                padding-top: 8rem;
+                text-align: center;
+            }
+            .hero-content p {
+                margin: 0 auto 2.5rem auto;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-photo-wrapper {
+                height: 350px; /* (معدل) تعديل الحجم */
+                width: 300px; /* (معدل) تعديل الحجم */
+                grid-row: 1 / 2; 
+                /* (معدل) تم حذف clip-path: none و border-radius: 12px لتعود للشكل الأصلي */
+            }
+            /* (ملغي) تم إلغاء قواعد clip-path الخاصة بالاتجاه */
+            /* html[dir="rtl"] .about-photo-wrapper { ... } */
+            /* html[dir="ltr"] .about-photo-wrapper { ... } */
+
+
+            /* (ملغي) إلغاء الميديا كويري الخاصة بالنزول الأفقي لأننا ألغيناه */
+            /* .projects-sticky-container { ... } */
+            
+            /* (جديد) جعل الصورة كاملة في التابلت */
+            .about-photo-wrapper img {
+                object-fit: contain; /* تغيير cover إلى contain */
+            }
+        }
+        
+        /* شاشات الموبايل الكبيرة */
+        @media (max-width: 768px) {
+            /* .nav-links is already hidden */
+            .hero-content h1 {
+                font-size: 3rem; 
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            /* (معدل) تعديل كارت المشروع ليكون 100% */
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-card h3 {
+                font-size: 1.5rem; 
+            }
+            .project-card .project-text {
+                padding: 1.5rem; 
+            }
+            .project-card p {
+                 /* (جديد) إلغاء الارتفاع الأدنى في الموبايل */
+                min-height: auto;
+            }
+            
+            /* (ملغي) تم حذف الميديا كويري الخاصة بزر الواتساب */
+            /* .whatsapp-fab { ... } */
+        }
+        
+        /* شاشات الموبايل الصغيرة */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.5rem; 
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .about-text p {
+                font-size: 1rem;
+            }
+            .about-photo-wrapper {
+                /* (معدل) تم حذف clip-path: none و border-radius: 12px */
+                width: 80%;
+                height: 250px;
+            }
+            .skill {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+            .project-card .project-text {
+                padding: 1.2rem;
+            }
+            
+            /* (جديد) جعل الصورة كاملة في الموبايل */
+            .about-photo-wrapper img {
+                object-fit: contain; /* تغيير cover إلى contain */
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <nav class="navbar" role="navigation" aria-label="Global Navigation">
+        
+        <!-- ====================================================================
+        ||           (تعديل) تم إلغاء لوجو الصور واستبداله بلوجو نصي            ||
+        ====================================================================
+        -->
+        
+        <!-- (معدل) تم استبدال اللوجو الصور بنص -->
+        <a href="#home" class="logo" data-lang-key="logo_name">
+           protfolio
+        </a>
+        
+        <!-- ====================================================================
+        ||                         نهاية تعديل اللوجو                        ||
+        ====================================================================
+        -->
+        
+        <div class="nav-links">
+            <a href="#home" data-lang-key="nav_home">الرئيسية</a>
+            <a href="#about" data-lang-key="nav_about">نبذة عني</a>
+            <a href="#projects" data-lang-key="nav_projects">المشاريع</a>
+            <a href="#contact" data-lang-key="nav_contact">التواصل</a>
+            
+            <button id="theme-toggle" class="theme-toggle-btn" title="تبديل الثيم">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+            
+            <!-- (جديد) زر تبديل اللغة -->
+            <button id="lang-toggle" class="lang-toggle-btn" title="Change Language">ع</button>
+        </div>
+        
+        <button class="menu-toggle" id="menu-toggle" title="القائمة" aria-expanded="false" aria-controls="mobile-nav">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    
+    <!-- القائمة الجانبية للموبايل -->
+    <div class="mobile-nav" id="mobile-nav">
+        <!-- (جديد) زر إغلاق القائمة -->
+        <button class="menu-close-btn" id="menu-close-btn" title="إغلاق">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <a href="#home" class="mobile-nav-link" data-lang-key="nav_home">الرئيسية</a>
+        <a href="#about" class="mobile-nav-link" data-lang-key="nav_about">نبذة عني</a>
+        <a href="#projects" class="mobile-nav-link" data-lang-key="nav_projects">المشاريع</a>
+        <a href="#contact" class="mobile-nav-link" data-lang-key="nav_contact">التواصل</a>
+        
+        <button id="theme-toggle-mobile" class="theme-toggle-btn" title="تبديل الثيم">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </button>
+        
+        <!-- (جديد) زر تبديل اللغة للموبايل -->
+        <button id="lang-toggle-mobile" class="lang-toggle-btn" title="Change Language">ع</button>
+    </div>
+
+    <!-- قسم الهيرو -->
+    <section id="home" class="hero">
+        <div class="hero-content reveal">
+            <h1>
+                <span class="highlight" data-lang-key="hero_name">أمجد تركي.</span>
+                <span data-lang-key="hero_title">مطور واجهات أمامية , مهندس برمجيات</span>
+            </h1>
+            <p data-lang-key="hero_subtitle">
+                أهلاً بك. أنا مطور فرونت ايند وطالب علوم حاسب،
+                أحول الأفكار إلى تجارب مستخدم تفاعلية وجذابة.
+            </p>
+            <a href="#projects" class="btn" data-lang-key="hero_button">استكشف أعمالي</a>
+        </div>
+    </section>
+
+    <!-- قسم نبذة عني -->
+    <section id="about" class="about">
+        <h2 class="section-title reveal" data-lang-key="about_title">من أنا؟</h2>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <!-- (معدل) تم تحديث الوصف بالكامل -->
+                <p data-lang-key="about_p1">
+                    أنا **أمجد تركي**، طالب متخصص في **علوم الحاسب والذكاء الاصطناعي** بجامعة جنوب الوادي الأهلية. شغوف بتحويل الأفكار المعقدة إلى حلول تقنية فعّالة، وأمتلك خبرة كمطور واجهات أمامية (Frontend) مع مهارات قوية في **React** و JavaScript.
+                </p>
+                <!-- (معدل) تم إضافة الجملة الجديدة هنا -->
+                <p data-lang-key="about_p2">
+                    إلى جانب تطوير الويب، أمتلك مهارات في مجالات متنوعة تشمل **التسويق الرقمي (Google Ads)**، تصميم قواعد البيانات (SQL Server)، وأساسيات **التعلم الآلي (ML)**. أسعى دائماً لتعلم تقنيات جديدة وتوسيع خبراتي.
+                </p>
+                
+                <!-- (معدل) تم تحديث المهارات بناء على الـ CV -->
+                <div class="skills">
+                    <div class="skill" data-lang-key="skill_react">React</div>
+                    <div class="skill" data-lang-key="skill_js">JavaScript (ES6+)</div>
+                    <div class="skill" data-lang-key="skill_python">Python</div>
+                    <div class="skill" data-lang-key="skill_sql">SQL Server</div>
+                    <div class="skill" data-lang-key="skill_google_ads">Google Ads</div>
+                    <div class="skill" data-lang-key="skill_ai_ml">AI & Machine Learning</div>
+                    <div class="skill" data-lang-key="skill_hcia_ai">HCIA-AI Certified</div>
+                    <div class="skill" data-lang-key="skill_git">Git</div>
+                </div>
+            </div>
+            <div class="about-photo-wrapper reveal">
+                <!-- ====================================================================
+                ||                                                                    ||
+                ||                      (صورة 1: صورتك الشخصية)                      ||
+                ||                                                                    ||
+                ====================================================================
+                -->
+                <!-- (معدل) تم تحديث اسم الصورة والرابط + إضافة تحسينات التحميل -->
+                <img src="https://i.postimg.cc/NjkQF8fC/Whats-App-Image-2025-11-15-at-03-31-12-ba304499.jpg" alt="صورة أمجد تركي" width="300" height="400" loading="lazy" decoding="async">
+            </div>
+        </div>
+    </section>
+
+    <!-- (جديد) قسم المشاريع - شبكة عادية -->
+    <section id="projects" class="projects">
+            
+        <h2 class="section-title reveal" data-lang-key="projects_title">إبداعاتي</h2>
+        
+        <div class="projects-grid">
+            
+            <!-- (معدل) المشروع 3: ClassMate (أصبح الأول والأهم) -->
+            <article class="project-card reveal">
+                <!-- ====================================================================
+                ||                                                                    ||
+                ||              (تعديل) تم تحديث رابط صورة ClassMate هنا              ||
+                ||                                                                    ||
+                ====================================================================
+                -->
+                <div class="project-gallery-wrapper" style="background-image: url('https://i.postimg.cc/LsJQwR7k/Screenshot-2025-11-15-033228.png')">
+                    <!-- ====================================================================
+                    ||                                                                    ||
+                    ||                 (معدل) تم إضافة صورة واحدة فقط                  ||
+                    ||                                                                    ||
+                    ====================================================================
+                    -->
+                    <!-- (ملغي) تم إلغاء كل صور الـ gallery-slide من هنا -->
+                </div>
+                <div class="project-text">
+                    <span class="project-category" data-lang-key="p3_category">منصة تعليمية (مؤسس)</span>
+                    <h3 data-lang-key="p3_title">منصة ClassMate (مؤسس ومدير تنفيذي)</h3>
+                    <p data-lang-key="p3_desc">تأسيس وقيادة تطوير منصة تعليمية متكاملة لطلاب الجامعات. المنصة تسد الفجوة بين الدراسة الأكاديمية (كتب، ملخصات، امتحانات) والجاهزية لسوق العمل (كورسات ومسارات مهنية).</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">Project Management</span>
+                    </div>
+                    <!-- (معدل) تم إضافة الرابط -->
+                    <a href="https://classmate.intelakah.com/" target="_blank" rel="noopener noreferrer" class="project-visit-btn" data-lang-key="p3_button">
+                        زور المنصة <span class="arrow">&rarr;</span>
+                    </a>
+                </div>
+            </article>
+            
+            <!-- (معدل) المشروع 2: شركة الوقاية -->
+            <article class="project-card reveal">
+                <!-- (معدل) تم تغيير الصورة إلى الصورة الجديدة -->
+                <div class="project-gallery-wrapper" style="background-image: url('https://i.postimg.cc/MHZzyv3J/Screenshot-2025-11-15-035621.png')">
+                    <!-- ====================================================================
+                    ||                                                                    ||
+                    ||                    (صورة 4 و 5: مشروع الوقاية)                     ||
+                    ||                                                                    ||
+                    ====================================================================
+                    -->
+                    <!-- (ملغي) تم إلغاء صور الـ gallery-slide من هنا -->
+                </div>
+                <div class="project-text">
+                    <span class="project-category" data-lang-key="p2_category">موقع تعريفي (Frontend)</span>
+                    <h3 data-lang-key="p2_title">موقع شركة الوقاية (الإمارات)</h3>
+                    <p data-lang-key="p2_desc">تطوير الواجهة الأمامية (Frontend) لشركة خدمات إماراتية. تم بناء الموقع باستخدام **React** لضمان تجربة مستخدم سريعة، متجاوبة، وسهلة الاستخدام على جميع الأجهزة.</p>
+                    <!-- (معدل) تم تحديث التاجات لـ React -->
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">CSS3</span>
+                    </div>
+                    <!-- (معدل) تم إضافة الرابط -->
+                    <a href="https://www.alngah.com" target="_blank" rel="noopener noreferrer" class="project-visit-btn" data-lang-key="p2_button">
+                        زور الموقع <span class="arrow">&rarr;</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- (معدل) المشروع 1: نظام المعمل -->
+            <article class="project-card reveal">
+                 <!-- (معدل) تم تحديث صورة المعمل -->
+                <div class="project-gallery-wrapper" style="background-image: url('https://i.postimg.cc/JzMS09FP/Screenshot-2025-11-15-035932.png')">
+                    <!-- ====================================================================
+                    ||                                                                    ||
+                    ||                      (صورة 6 و 7: مشروع المعمل)                     ||
+                    ||                                                                    ||
+                    ====================================================================
+                    -->
+                    <!-- (ملغي) تم إلغاء صور الـ gallery-slide من هنا -->
+                </div>
+                <div class="project-text">
+                    <span class="project-category" data-lang-key="p1_category">نظام متكامل (Full-Stack)</span>
+                    <h3 data-lang-key="p1_title">نظام إدارة معامل التحاليل</h3>
+                    <p data-lang-key="p1_desc">نظام متكامل صُمم لإدارة دورة عمل معمل التحاليل بالكامل، بدءاً من تسجيل المرضى وحجز التحاليل، وصولاً إلى إصدار الفواتير، كشوفات الحسابات، وطباعة التقارير.</p>
+                    <!-- (معدل) تم تحديث التاجات لـ SQL -->
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">SQL Server</span>
+                        <span class="tag">ERD Design</span>
+                    </div>
+                    <!-- (معدل) الرابط خاص، سيبقى كما هو -->
+                    <a href="https://www.linkedin.com/posts/amgad-torky-75202005torky_frontenddevelopment-javascript-vanillajs-activity-7374094612711256064-Q0z1?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFEYqFAB6iVvkBVDMLiNLmIQLR9DARCLf9o" class="project-visit-btn" data-lang-key="p1_button">
+                        الفيديو خاص   <span class="arrow">&rarr;</span>
+                    </a>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+
+    <!-- قسم التواصل -->
+    <section id="contact" class="contact">
+        <h2 class="section-title reveal" data-lang-key="contact_title">لنعمل معاً</h2>
+        <div class="contact-form reveal">
+            
+            <!-- (تعديل) تم إرجاع متطلبات Netlify Forms -->
+            <form name="contact" method="POST" data-netlify="true">
+                <!-- (جديد) حقل مخفي مطلوب لـ Netlify -->
+                <input type="hidden" name="form-name" value="contact" />
+                
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" data-lang-key="form_name" placeholder="الاسم الكامل" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" data-lang-key="form_email" placeholder="البريد الإلكتروني" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" class="form-control" data-lang-key="form_message" placeholder="أخبرني عن مشروعك..." required></textarea>
+                </div>
+                <button type="submit" class="btn" data-lang-key="form_button">إرسال الرسالة</button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- الفوتر (معدل بالأيقونات) -->
+    <footer>
+        <div class="social-links">
+            <!-- (تنبيه) لا تنسى إضافة روابطك هنا -->
+            <a href="https://www.linkedin.com/in/amgad-torky-75202005torky" target="_blank" rel="noopener noreferrer" class="social-link" data-lang-key="social_linkedin" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/amgad.t_official/?__pwa=1" target="_blank" rel="noopener noreferrer" class="social-link" data-lang-key="social_instagram" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <!-- (جديد) تم إضافة زر واتساب هنا -->
+            <a href="https://wa.me/201050049085" target="_blank" rel="noopener noreferrer" class="social-link" data-lang-key="social_whatsapp" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            
+        </div>
+        <p class="copyright" data-lang-key="footer_copyright">جميع الحقوق محفوظة &copy; 2025 | أمجد تركي</p>
+    </footer>
+
+    <!-- (ملغي) تم حذف زر واتساب العائم من هنا -->
+    <!-- <a href="https://wa.me/YOUR_PHONE_NUMBER" ...>...</a> -->
+
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // (جديد) ملف الترجمة الكامل (معدل بالكامل)
+            const translations = {
+                "ar": {
+                    "meta_title":  " Amgad-Torky-protfolio ",
+                    "logo_name":   " protfolio ", 
+                    "nav_home": "الرئيسية",
+                    "nav_about": "نبذة عني",
+                    "nav_projects": "المشاريع",
+                    "nav_contact": "التواصل",
+                    "lang_toggle_text": "EN",
+                    "hero_name": "Amgad Torky.",
+                    "hero_title": "  مطور واجهات أمامية , مهندس برمجيات ",
+                    "hero_subtitle": "أهلاً بك. أنا مطور متخصص في React وطالب علوم حاسب وذكاء اصطناعي، أحول الأفكار إلى تجارب مستخدم تفاعلية وجذابة.",
+                    "hero_button": "استكشف أعمالي",
+                    "about_title": "من أنا؟",
+                    "about_p1": "أنا **Amgad Torky**، طالب متخصص في **علوم الحاسب والذكاء الاصطناعي** بجامعة جنوب الوادي الأهلية. شغوف بتحويل الأفكار المعقدة إلى حلول تقنية فعّالة، وأمتلك خبرة كمطور واجهات أمامية (Frontend) مع مهارات قوية في **React** و JavaScript.",
+                    // (معدل) تمت إضافة الجملة الجديدة
+                    "about_p2": "إلى جانب تطوير الويب، أمتلك مهارات في مجالات متنوعة تشمل **التسويق الرقمي (Google Ads)**، تصميم قواعد البيانات (SQL Server)، وأساسيات **التعلم الآلي (ML)**. أسعى دائماً لتعلم تقنيات جديدة وتوسيع خبراتي، **وأطور من نفسي حالياً لأصبح مطور تطبيقات .NET و تطبيقات هواتف (Mobile App) متكامل.**",
+                    /* (معدل) تم تحديث المهارات */
+                    "skill_react": "React",
+                    "skill_js": "JavaScript (ES6+)",
+                    "skill_python": "Python",
+                    "skill_sql": "SQL Server",
+                    "skill_google_ads": "إعلانات جوجل",
+                    "skill_ai_ml": "الذكاء الاصطناعي والتعلم الآلي",
+                    "skill_hcia_ai": "شهادة هواوي (HCIA-AI)",
+                    "skill_git": "Git",
+                    
+                    "projects_title": "إبداعاتي",
+                    
+                    /* (معدل) مشروع المعمل */
+                    "p1_category": "نظام متكامل (Full-Stack)",
+                    "p1_title": "نظام إدارة معامل التحاليل",
+                    "p1_desc": "نظام متكامل صُمم لإدارة دورة عمل معمل التحاليل بالكامل، بدءاً من تسجيل المرضى وحجز التحاليل، وصولاً إلى إصدار الفواتير، كشوفات الحسابات، وطباعة التقارير.",
+                    "p1_button": "الفيديو الخاص",
+                    
+                    /* (معدل) مشروع الوقاية */
+                    "p2_category": "موقع تعريفي (Frontend)",
+                    "p2_title": "موقع شركة الوقاية (الإمارات)",
+                    "p2_desc": "تطوير الواجهة الأمامية (Frontend) لشركة خدمات إماراتية. تم بناء الموقع باستخدام **React** لضمان تجربة مستخدم سريعة، متجاوبة، وسهلة الاستخدام على جميع الأجهزة.",
+                    "p2_button": "زور الموقع",
+                    
+                    /* (معدل) مشروع ClassMate */
+                    "p3_category": "منصة تعليمية (مؤسس)",
+                    "p3_title": "منصة ClassMate (مؤسس ومدير تنفيذي)",
+                    "p3_desc": "تأسيس وقيادة تطوير منصة تعليمية متكاملة لطلاب الجامعات. المنصة تسد الفجوة بين الدراسة الأكاديمية (كتب، ملخصات، امتحانات) والجاهزية لسوق العمل (كورسات ومسارات مهنية).",
+                    "p3_button": "زور المنصة",
+                    
+                    "contact_title": "لنعمل معاً",
+                    "form_name": "الاسم الكامل",
+                    "form_email": "البريد الإلكتروني",
+                    "form_message": "أخبرني عن مشروعك...",
+                    "form_button": "إرسال الرسالة",
+                    "social_linkedin": "لينكدإن",
+                    "social_instagram": "انستجرام",
+                    "social_whatsapp": "واتساب", /* (جديد) */
+                    /* (معدل) تم حذف جيت هاب ليطابق الـ HTML */
+                    "footer_copyright": "جميع الحقوق محفوظة © 2025 | Amgad Torky"
+                },
+                "en": {
+                    "meta_title": "Amgad Torky | Frontend Developer & software Engineer",
+                    "logo_name": "protfolio",
+                    "nav_home": "Home",
+                    "nav_about": "About",
+                    "nav_projects": "Projects",
+                    "nav_contact": "Contact",
+                    "lang_toggle_text": "ع",
+                    "hero_name": "Amgad Torky.",
+                    "hero_title": "Frontend Developer & Software Engineer",
+                    "hero_subtitle": "Welcome. I'm a React developer and a CS/AI student, turning ideas into interactive and engaging user experiences.",
+                    "hero_button": "Explore My Work",
+                    "about_title": "Who Am I?",
+                    "about_p1": "I am **Amgad Torky**, a dedicated **Computer Science and Artificial Intelligence** student at South Valley National University. I am passionate about transforming complex ideas into effective tech solutions, with strong experience as a Frontend Developer specializing in **React** and JavaScript.",
+                    // (معدل) تمت إضافة الجملة الجديدة
+                    "about_p2": "Beyond web development, I have diverse skills in **Digital Marketing (Google Ads)**, database design (SQL Server), and the fundamentals of **Machine Learning (ML)**. I am always eager to learn new technologies and expand my expertise, **and I am actively developing myself to become a full .NET and mobile app developer.**",
+                    /* (معدل) تم تحديث المهارات */
+                    "skill_react": "React",
+                    "skill_js": "JavaScript (ES6+)",
+                    "skill_python": "Python",
+                    "skill_sql": "SQL Server",
+                    "skill_google_ads": "Google Ads",
+                    "skill_ai_ml": "AI & Machine Learning",
+                    "skill_hcia_ai": "HCIA-AI Certified",
+                    "skill_git": "Git",
+                    
+                    "projects_title": "My Creations",
+                    
+                    /* (معدل) مشروع المعمل */
+                    "p1_category": "Full-Stack System",
+                    "p1_title": "Lab Management System",
+                    "p1_desc": "A comprehensive system designed to manage the entire workflow of a medical lab, from patient registration and test booking to invoicing, account statements, and report generation.",
+                    "p1_button": "private video",
+                    
+                    /* (معدل) مشروع الوقاية */
+                    "p2_category": "Corporate Website (Frontend)",
+                    "p2_title": "Alwiqaya Company (UAE)",
+                    "p2_desc": "Developed the frontend for a UAE-based service company. Built with **React** to ensure a fast, responsive, and user-friendly experience across all devices.",
+                    "p2_button": "Visit Site",
+
+                    /* (معدل) مشروع ClassMate */
+                    "p3_category": "E-Learning Platform (Founder)",
+                    "p3_title": "ClassMate Platform (Founder & CEO)",
+                    "p3_desc": "Founded and led the development of an all-in-one educational platform for university students. The platform bridges the gap between academic studies (books, summaries, exams) and career readiness (professional courses and tracks).",
+                    "p3_button": "Visit Platform",
+                    
+                    "contact_title": "Let's Work Together",
+                    "form_name": "Full Name",
+                    "form_email": "Email Address",
+                    "form_message": "Tell me about your project...",
+                    "form_button": "Send Message",
+                    "social_linkedin": "LinkedIn",
+                    "social_instagram": "Instagram",
+                    "social_whatsapp": "WhatsApp", /* (جديد) */
+                    /* (معدل) تم حذف جيت هاب ليطابق الـ HTML */
+                    "footer_copyright": "All rights reserved © 2025 | Amgad Torky"
+                }
+            };
+
+            // (من كودك) تأثير الظهور عند النزول
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            revealElements.forEach(element => {
+                revealObserver.observe(element);
+            });
+
+            // (من كودك) تغيير خلفية الـ Navbar
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)'; 
+                    navbar.style.backgroundColor = 'var(--bg-navbar-scrolled)'; 
+                    navbar.style.padding = '1rem 5%';
+                } else {
+                    navbar.style.boxShadow = 'none';
+                    navbar.style.backgroundColor = 'var(--bg-navbar)'; 
+                    navbar.style.padding = '1.5rem 5%';
+                }
+            });
+            
+            /* (ملغي) تم إلغاء لوجيك معرض الصور */
+            
+            /* (ملغي) تم إلغاء لوجيك النزول الأفقي */
+
+            // (معدل) لوجيك تبديل الثيم
+            function initThemeToggle() {
+                // (معدل) استهداف الكلاس بدلاً من الأي دي
+                const toggleBtns = document.querySelectorAll('.theme-toggle-btn'); 
+                const html = document.documentElement;
+                
+                if (toggleBtns.length === 0 || !html) return;
+
+                const storedTheme = localStorage.getItem('theme');
+                if (storedTheme === 'dark') {
+                    html.classList.add('dark');
+                }
+                
+                const toggleTheme = () => {
+                    if (html.classList.contains('dark')) {
+                        html.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        html.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                };
+
+                // (معدل) إضافة المستمع لكل الأزرار
+                toggleBtns.forEach(btn => btn.addEventListener('click', toggleTheme));
+            }
+            initThemeToggle();
+            
+            // (معدل) لوجيك قائمة الهامبرغر مع زر الإغلاق
+            function initMobileMenu() {
+                const menuToggle = document.getElementById('menu-toggle');
+                const mobileNav = document.getElementById('mobile-nav');
+                const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+                const menuClose = document.getElementById('menu-close-btn'); // (جديد)
+
+                if (!menuToggle || !mobileNav || !menuClose) return; // (معدل)
+                
+                // (معدل) دالة الإغلاق المحدّثة
+                const closeNav = () => {
+                    mobileNav.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                };
+                
+                // (معدل) دالة الفتح/الإغلاق
+                menuToggle.addEventListener('click', () => {
+                    const open = mobileNav.classList.toggle('active');
+                    menuToggle.setAttribute('aria-expanded', open);
+                });
+                
+                // (جديد) زر الإغلاق
+                menuClose.addEventListener('click', closeNav);
+                
+                // (معدل) إغلاق عند الضغط على رابط
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', closeNav);
+                });
+                
+                // (جديد) إغلاق عند الضغط على Escape
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                        closeNav();
+                    }
+                });
+            }
+            initMobileMenu();
+
+            // (جديد) لوجيك تبديل اللغة
+            function initLanguageToggle() {
+                const langToggleBtns = document.querySelectorAll('.lang-toggle-btn');
+                const htmlEl = document.documentElement;
+                
+                if (langToggleBtns.length === 0) return;
+
+                const setLanguage = (lang) => {
+                    if (!['ar', 'en'].includes(lang)) return;
+
+                    htmlEl.lang = lang;
+                    htmlEl.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+                    localStorage.setItem('lang', lang);
+
+                    // تحديث نصوص الأزرار
+                    langToggleBtns.forEach(btn => {
+                        btn.textContent = translations[lang].lang_toggle_text;
+                    });
+
+                    // تحديث كل النصوص في الصفحة
+                    document.querySelectorAll('[data-lang-key]').forEach(el => {
+                        const key = el.dataset.langKey;
+                        const translation = translations[lang][key];
+
+                        if (translation) {
+                            // (جديد) التعامل مع النصوص التي تحتوي على HTML (مثل **أمجد**)
+                            // (معدل) التأكد من أن المفاتيح موجودة قبل تطبيق الـ innerHTML
+                            if (key === 'about_p1' || key === 'about_p2' || key === 'p2_desc') {
+                                 el.innerHTML = translation.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                            }
+                            // (جديد) التعامل مع Placeholders
+                            else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                                el.placeholder = translation;
+                            } 
+                            // (جديد) التعامل مع title
+                            else if (el.tagName === 'TITLE') {
+                                el.textContent = translation;
+                            }
+                            // (جديد) التعامل مع title الخاص بالروابط
+                            else if (el.classList.contains('social-link')) {
+                                el.title = translation;
+                            }
+                            // النصوص العادية
+                            else {
+                                el.textContent = translation;
+                            }
+                        }
+                    });
+                };
+
+                // 1. تحميل اللغة عند فتح الصفحة
+                let currentLang = localStorage.getItem('lang') || 'ar'; // الافتراضي عربي
+                setLanguage(currentLang);
+
+                // 2. إضافة المستمع لأزرار اللغة
+                langToggleBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        currentLang = (htmlEl.lang === 'ar') ? 'en' : 'ar';
+                        setLanguage(currentLang);
+                    });
+                });
+            }
+
+            initLanguageToggle();
+
+        });
+    </script>
+</body>
+</html>
