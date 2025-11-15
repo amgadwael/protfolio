@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شكرًا لك | Amgad Torky</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --primary-light: #8A85FF;
+            --bg-page: #F0F2F5; 
+            --text-main: #1A1A1A; 
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            animation: pulse 1.5s infinite;
+        }
+        .home-link {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        .home-link:hover {
+            opacity: 0.9;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            70% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+
+        /* Dark Mode Styling */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #0a0a0a;
+            }
+            .container {
+                background: #1a1a1a;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+            h1 {
+                color: var(--primary-light);
+            }
+            p {
+                color: #8A8A8A;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1>شكرًا لك، Amgad Torky!</h1>
+        <p>لقد تم استلام رسالتك بنجاح. سأقوم بمراجعتها والرد عليك في أقرب وقت ممكن.</p>
+        <a href="https://amgad-torky-dev.netlify.app/" class="home-link">العودة إلى الرئيسية</a>
+    </div>
+</body>
+</html>
